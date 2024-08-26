@@ -18,6 +18,8 @@ require('lazy').setup({
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 
+  require 'plugins/toggleterm',
+
   require 'plugins/bufferline',
 
   require 'plugins/gitsigns',
@@ -43,6 +45,11 @@ require('lazy').setup({
   require 'plugins/markdown-preview',
 
   require 'plugins/neo-tree',
+
+  require 'plugins/lint',
+
+  -- [[ alpha is a fast and fully programmable greeter for neovim ]]
+  require 'plugins/alpha',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

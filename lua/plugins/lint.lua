@@ -6,7 +6,14 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
+        python = { 'ruff' },
         markdown = { 'markdownlint' },
+        terraform = { 'tflint' },
+        json = { 'jsonlint' },
+        dockerfile = { 'hadolint' },
+        makefile = { 'checkmake' },
+        ghaction = { 'actionlint' },
+        -- yaml = { 'actionlint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -40,6 +47,15 @@ return {
       -- lint.linters_by_ft['ruby'] = nil
       -- lint.linters_by_ft['terraform'] = nil
       -- lint.linters_by_ft['text'] = nil
+
+      -- this gets the linters running for the current buffer
+      -- local lint_progress = function()
+      -- local linters = require("lint").get_running()
+      -- if #linters == 0 then
+      --         return "󰦕"
+      --   end
+      -- return "󱉶 " .. table.concat(linters, ", ")
+      -- end
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.

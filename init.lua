@@ -85,30 +85,24 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 --}}}
 
---{{{ Base Configuration
+--[[ Base Configuration ]]
 -- See `:help mapleader`
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
---}}}
+--
 
---{{{ Setting options
 require 'options'
---}}}
 
---{{{ Keymaps
 require 'keymaps'
---}}}
 
---{{{ Install lazy.nvim plugin manager
 require 'lazy-bootstrap'
---}}}
 
---{{{ Configure and install plugins
 require 'lazy-plugins'
---}}}
+
+require 'filetypes'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

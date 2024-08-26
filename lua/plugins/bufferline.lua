@@ -30,7 +30,7 @@ return {
       diagnostics_update_on_event = true,
       offsets = {
         {
-          filetype = 'NvimTree',
+          filetype = 'neo-tree',
           text = 'File Explorer',
           text_align = 'center',
           separator = true,
@@ -50,4 +50,10 @@ return {
       },
     },
   },
+  config = function()
+    require('bufferline').setup {
+      vim.keymap.set('n', 'gt', ':BufferLineCycleNext<CR>', { noremap = false, silent = true }),
+      vim.keymap.set('n', 'g<S-t>', ':BufferLineCyclePrev<CR>', { noremap = false, silent = true }),
+    }
+  end,
 }

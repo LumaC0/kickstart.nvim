@@ -69,13 +69,21 @@ return {
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
+
+          -- show diagnstics in a hovering window when the key combination is pressed
+          map('ge', vim.diagnostic.open_float, '[G]oto [E]rror')
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('gr', function()
+            require('telescope.builtin').lsp_references {
+              include_declaration = false,
+              fname_width = 45,
+            }
+          end, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
@@ -168,17 +176,25 @@ return {
         -- clangd = {},
         -- gopls = {},
         ruff = {
-          settings = {},
+          settings = {
+            lineLength = 88,
+          },
         },
         pyright = {
           settings = {
             pyright = {
               -- Using Ruff's import organizer
               disableOrganizeImports = true,
+              -- disableLanguageServices = false,
             },
             python = {
               analysis = {
-                -- Ignore all filefs for analuisis to use Ruff for linting
+                -- autoImportCompletions = true,
+                -- autoSearchPaths = true,
+                -- diagnosticMode = 'workspace',
+                -- typeCheckingMode = 'standard',
+                -- useLibraryCodeForTypes = true,
+                -- Ignore all filefs for analysis to use Ruff for linting
                 ignore = { '*' },
               },
             },
@@ -235,17 +251,6 @@ return {
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-
-            -- https://neovim.discourse.group/t/commentstring-for-terraform-files-not-set/4066/3
-            if server_name == 'terraformls' then
-              vim.api.nvim_create_autocmd('FileType', {
-                group = vim.api.nvim_create_augroup('FixTerraformConnetString', { clear = true }),
-                callback = function(ev)
-                  vim.bo[ev.buf].commentstring = '# %s'
-                end,
-                pattern = { 'terraform', 'hcl' },
-              })
-            end
             require('lspconfig')[server_name].setup(server)
           end,
         },
