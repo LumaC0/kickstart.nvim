@@ -81,7 +81,7 @@ return {
           map('gr', function()
             require('telescope.builtin').lsp_references {
               include_declaration = false,
-              fname_width = 45,
+              fname_width = 128,
             }
           end, '[G]oto [R]eferences')
 

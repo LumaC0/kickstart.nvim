@@ -36,11 +36,24 @@ return {
     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_hidden = false,
+        },
+        window = {
+          mappings = {
+            ['\\'] = 'close_window',
+            ['t'] = 'open_with_window_picker',
+          },
+        },
+      },
       source_selector = {
         winbar = true,
         statusline = true,
       },
-      close_if_last_window = false,
+      close_if_last_window = true,
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
@@ -149,15 +162,5 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
-  },
-  opts = {
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-          ['t'] = 'open_with_window_picker',
-        },
-      },
-    },
   },
 }

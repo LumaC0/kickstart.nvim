@@ -11,7 +11,7 @@ return {
       shade_terminals = true,
       persist_size = false,
       persist_mode = false,
-      direction = 'horizontal',
+      direction = 'float',
       close_on_exit = true,
       shell = vim.o.shell,
     }
