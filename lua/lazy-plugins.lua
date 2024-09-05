@@ -53,7 +53,7 @@ require('lazy').setup({
 
   require 'plugins/copilot',
 
-  require 'plugins/vimwiki',
+  -- require 'plugins/vimwiki',
 
   -- require 'plugins/auto-save',
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
