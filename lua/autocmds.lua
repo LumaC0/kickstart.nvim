@@ -9,7 +9,7 @@ local my_augroup = augroup('MyAutocommands', { clear = true })
 autocmd({ 'VimEnter', 'BufWinEnter' }, {
   group = my_augroup,
   callback = function()
-    if vim.bo.filetype ~= 'neo-tree' and vim.fn.argc() > 0 then
+    if vim.bo.filetype ~= 'neo-tree' and vim.bo.filetype ~= 'vimwiki' and vim.fn.argc() > 0 then
       vim.cmd 'Neotree show'
     end
   end,

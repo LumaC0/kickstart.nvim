@@ -1,6 +1,6 @@
 return {
   'vimwiki/vimwiki',
-  config = function()
+  init = function()
     local home = vim.env.HOME
     vim.g.vimwiki_list = {
       {

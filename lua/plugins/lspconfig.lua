@@ -200,7 +200,9 @@ return {
             },
           },
         },
-        terraformls = {},
+        terraformls = {
+          filetypes = { 'hcl', 'tf', 'tfvars', 'terraform', 'terragrunt' },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --

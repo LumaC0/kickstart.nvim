@@ -36,6 +36,10 @@ require('lazy').setup({
 
   require 'plugins/tokyonight',
 
+  require 'plugins/onenord',
+
+  require 'plugins/catppuccin',
+
   require 'plugins/todo-comments',
 
   require 'plugins/mini',
@@ -53,7 +57,7 @@ require('lazy').setup({
 
   require 'plugins/copilot',
 
-  -- require 'plugins/vimwiki',
+  require 'plugins/vimwiki',
 
   -- require 'plugins/auto-save',
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

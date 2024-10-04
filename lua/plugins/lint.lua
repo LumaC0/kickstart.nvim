@@ -9,6 +9,7 @@ return {
         python = { 'ruff' },
         markdown = { 'markdownlint' },
         terraform = { 'tflint' },
+        tf = { 'tflint' },
         json = { 'jsonlint' },
         dockerfile = { 'hadolint' },
         makefile = { 'checkmake' },
